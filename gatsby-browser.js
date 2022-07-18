@@ -3,7 +3,7 @@ import "typeface-montserrat"
 import "typeface-merriweather"
 // normalize CSS across browsers
 import "./src/normalize.css"
-// custom CSS styles
+// Tailwind CSS styles
 import "./src/style.css"
 
 // Highlighting for code blocks

@@ -8,6 +8,8 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.6",
+    "@heroicons/react": "^1.0.6",
     "gatsby": "^4.18.2",
     "gatsby-plugin-feed": "^4.18.1",
     "gatsby-plugin-gatsby-cloud": "^4.18.1",
@@ -33,7 +35,11 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "autoprefixer": "^10.4.7",
+    "gatsby-plugin-postcss": "^5.18.0",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "tailwindcss": "^3.1.6"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
