@@ -13,6 +13,12 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-postcss",
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: process.env.GOOGLE_AD_SENSE
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
