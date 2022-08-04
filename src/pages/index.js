@@ -8,7 +8,7 @@ import Hero from "../components/hero"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+  const posts = data.allContentfulAsset.nodes
 
   if (posts.length === 0) {
     return (
@@ -31,10 +31,10 @@ const BlogIndex = ({ data, location }) => {
       <div className="container mx-auto">
         <ol className="grid grid-cols-3 gap-3 mt-10">
           {posts.map(post => {
-            const title = post.frontmatter.title || post.fields.slug
+            const title = post.title 
 
             return (
-              <li key={post.fields.slug}>
+              <li key={post.title }>
                 <article
                   className="max-w-lg rounded overflow-hidden shadow-lg"
                   itemScope
@@ -46,13 +46,13 @@ const BlogIndex = ({ data, location }) => {
                     alt="Mountain"
                   />
                   <div className="px-6 py-4">
-                    <Link to={post.fields.slug} itemProp="url">
+                    <Link to={post.title } itemProp="url">
                       <div className="font-bold text-xl mb-2">{title}</div>
                     </Link>
                     <p
                       className="text-gray-700 text-base"
                       dangerouslySetInnerHTML={{
-                        __html: post.frontmatter.description || post.excerpt,
+                        __html: post.description || post.excerpt,
                       }}
                       itemProp="description"
                     ></p>
@@ -87,17 +87,11 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allContentfulAsset {
       nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-        }
+        contentful_id
+        title
+        description
       }
     }
   }
