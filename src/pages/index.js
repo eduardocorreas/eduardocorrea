@@ -7,8 +7,8 @@ import Seo from "../components/seo"
 import Hero from "../components/hero"
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allContentfulAsset.nodes
+  const siteTitle = `Title`
+  const posts = data.allContentfulBlogPost.nodes
 
   if (posts.length === 0) {
     return (
@@ -34,7 +34,7 @@ const BlogIndex = ({ data, location }) => {
             const title = post.title 
 
             return (
-              <li key={post.title }>
+              <li key={ post.title }>
                 <article
                   className="max-w-lg rounded overflow-hidden shadow-lg"
                   itemScope
@@ -52,7 +52,7 @@ const BlogIndex = ({ data, location }) => {
                     <p
                       className="text-gray-700 text-base"
                       dangerouslySetInnerHTML={{
-                        __html: post.description || post.excerpt,
+                        __html: post.description.description,
                       }}
                       itemProp="description"
                     ></p>
@@ -87,11 +87,16 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulAsset {
+    allContentfulBlogPost(limit: 3, filter: { node_locale: { eq: "en-US" } }) {
       nodes {
-        contentful_id
         title
-        description
+        slug
+        contentful_id
+        createdAt
+        description {
+          description
+        }
+        id
       }
     }
   }
