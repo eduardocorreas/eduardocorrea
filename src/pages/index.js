@@ -31,10 +31,10 @@ const BlogIndex = ({ data, location }) => {
       <div className="container mx-auto">
         <ol className="grid grid-cols-3 gap-3 mt-10">
           {posts.map(post => {
-            const title = post.title 
+            const title = post.title
 
             return (
-              <li key={ post.title }>
+              <li key={post.title}>
                 <article
                   className="max-w-lg rounded overflow-hidden shadow-lg"
                   itemScope
@@ -46,7 +46,7 @@ const BlogIndex = ({ data, location }) => {
                     alt="Mountain"
                   />
                   <div className="px-6 py-4">
-                    <Link to={post.title } itemProp="url">
+                    <Link to={post.title} itemProp="url">
                       <div className="font-bold text-xl mb-2">{title}</div>
                     </Link>
                     <p
